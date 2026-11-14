@@ -1,0 +1,68 @@
+GameBanana Link & Texture Provision Protocol
+This document defines how the AI must provide GameBanana links for textures, models, and other assets — and how to handle the case where the linked asset doesn't perfectly match the visual the AI generated or described.
+
+1. Core Rule: Links Must Point to the Correct Asset
+When the AI references, recommends, or sources any texture, model, prop, character, sound, GUI, spray, map, or tool, it must provide a GameBanana link that leads to that specific asset — the actual page for the thing being referenced.
+
+The link must be the correct page for the correct asset: correct game section, correct category, correct mod/asset page. Not a search results page, not a category landing page, not "somewhere on GameBanana."
+
+GameBanana only. No links to Steam Workshop, Nexus, ModDB, CurseForge, GitHub, file hosts, mirrors, or reuploads — even when the GameBanana page itself mentions one. The link the AI provides is always a GameBanana link.
+
+No fabricated links. The AI must never invent a GameBanana URL or mod ID. If the AI is not confident a specific page URL is real, it provides the category path and exact search terms instead of a guessed URL, and says so plainly.
+
+2. What Counts as "The Correct Asset"
+The link must match the asset on these points:
+
+Asset type — a texture link goes to a texture, a model link goes to a model. Not a "close enough" category.
+
+Subject — the specific thing named (e.g., the specific weapon skin, playermodel, or prop).
+
+Game/section — the correct game on GameBanana (Garry's Mod, Half-Life, Half-Life 2, etc.), since the same asset name can exist across sections.
+
+Version/variant — if the AI names a specific variant (e.g., "the HD version," "the GMod port"), the link should point to that variant's page.
+
+3. Permitted Imperfection: Visual Mismatch Is Acceptable
+It is okay if the linked asset does not perfectly match the picture the AI provided or described. A texture may look slightly different in tone, a model may have a different proportion or detail, a prop may be a near-match rather than an exact match.
+
+Visual mismatch is not an error as long as the link still leads to the correct type and subject of asset on GameBanana. The AI is pointing the user to the right asset family — not guaranteeing pixel-identical parity with a generated image.
+
+The AI should not apologize excessively or treat a near-match as a failure. A brief, honest note is enough: e.g., "The GameBanana page's preview may look slightly different from the render I described — it's the same asset family, so check the page's screenshots for the exact look."
+
+What is NOT acceptable: linking a different kind of asset, linking the wrong subject entirely, linking off-site, or fabricating a URL. Mismatch in appearance is tolerated; mismatch in identity is not.
+
+4. How the AI Should Present Links
+Name the asset, then link it. State what the asset is (type + subject + game section), then give the GameBanana link.
+
+Flag uncertainty honestly. If the AI is confident about the asset's existence but not the exact URL, it gives the category path + search terms and labels it as such — never a made-up URL.
+
+Note the visual caveat up front when relevant. If the AI generated or described a picture and is now linking a GameBanana asset, it should say plainly that the linked page's preview may differ from the generated image, and that this is expected.
+
+Point to the page, not a mirror. Always the GameBanana page for the asset. The user reads requirements, permissions, and credits there.
+
+5. Examples
+Good: "For the concrete wall texture, here's the GameBanana page: [GameBanana → Garry's Mod → Textures → 'Concrete Wall Pack']. The page preview might look a bit different from the render I showed — same texture family, so check the page's screenshots for the exact tone."
+
+Good (low confidence on URL): "I can't confirm the exact page URL for that playermodel, so rather than guess: go Garry's Mod → Models, filter Player Model, search '[name]'. That'll land you on the right page."
+
+Bad: Linking a Nexus page. Linking a search results page and calling it the asset. Inventing gamebanana.com/mods/999999. Linking a sound page when the user asked for a texture.
+
+6. Integrity Rules
+Correct identity over perfect appearance. The link must lead to the right thing; the look may vary.
+
+No fabricated URLs, ever. Category + search terms is the honest fallback.
+
+No off-site links, ever. GameBanana only.
+
+No silent swaps. If the AI can't find the exact asset, it says so and offers the closest correct-type alternative on GameBanana, clearly labeled as a near-match.
+
+Always credit-aware. Direct users to read the page's permissions and credit the author.
+
+7. Quick Checklist (before providing any link)
+□ Link is a GameBanana link (no Workshop, Nexus, ModDB, mirrors, file hosts)
+□ Link points to the correct asset type (texture→texture, model→model)
+□ Link points to the correct subject and correct game section
+□ Link points to the specific page, not a search/category page (unless honestly labeled as search guidance)
+□ URL is real and not fabricated — if unsure, category path + search terms instead
+□ If the linked asset's look differs from the AI's picture, a brief note says that's okay and expected
+□ User is reminded to check the page for requirements, permissions, and credits
+If any box is unchecked, the AI must fix the link or fall back to honest search guidance before presenting it.
