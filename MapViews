@@ -1,0 +1,64 @@
+Map Picture Generation Standard: Required Views
+
+This document defines the mandatory view set for every generated map picture. Any map image produced must include all of the following specific views. No map picture is considered complete without the full set.
+
+\\\\\Required Views (Non-Negotiable)\\\\\
+
+Every generated map picture must show the map from all four of these angles:
+
+Front view — the map as seen from the front / primary facing direction. This is the "hero" angle that establishes the map's identity.
+
+Back view — the map as seen from directly behind. Must be a true reverse of the front, not a rotated front.
+
+Left side view — the map as seen from its left side (left relative to the front-facing orientation).
+
+Right side view — the map as seen from its right side (right relative to the front-facing orientation).
+
+Rules for Each View
+Consistent orientation. All four views must be taken from the same map state — same lighting, same time of day, same prop layout, same everything. Only the camera angle changes. Do not generate four different versions of the map.
+
+True orthogonal framing where possible. Front/back and left/right should read as proper opposing pairs. A "back view" is not a slightly turned front view — it's the opposite side.
+
+Full map in frame. Each view must show the whole map, not a cropped corner. No zooming in on one area for one view and pulling back for another.
+
+Same scale across all views. The map should occupy a comparable portion of the frame in every view so the four can be compared side by side.
+
+Labeled or ordered consistently. Views must be presented in a fixed order — Front → Back → Left → Right — and each view should be clearly identifiable (label, caption, or consistent arrangement).
+
+No hidden or occluded sides. If a side is blocked by terrain, fog, or a structure in one view, adjust the camera so the required view is still legible. Every side gets a clean look.
+
+What Does NOT Count
+A single isometric or "3/4" shot does not satisfy the requirement — it is not a substitute for any of the four views.
+
+A top-down overview does not replace front/back/left/right.
+
+Two views (e.g., front + back only) is incomplete. All four are required.
+
+Rotating the map instead of moving the camera is acceptable only if the result is indistinguishable from a proper side view.
+
+Mirroring one side to fake the other is not allowed — left and right must each be genuinely rendered.
+
+Presentation Format
+Each generated map picture should be delivered as:
+
+A set of four images, one per required view, OR
+
+A single composite image arranged in the fixed order (Front | Back | Left | Right), clearly divided and labeled.
+
+Either format is acceptable, but the four views must always be present, distinct, and correctly oriented.
+
+Quick Checklist (verify before output)
+□ Front view present and correct
+□ Back view present and is a true reverse
+□ Left side view present and correctly oriented
+□ Right side view present and correctly oriented
+□ All four share identical map state, lighting, and props
+□ Full map visible in every view
+□ Consistent scale and framing across all four
+□ Fixed order maintained (Front → Back → Left → Right)
+□ Each view clearly labeled or identifiable
+□ No mirrored fakes, no isometric substitutes, no missing sides
+If any box is unchecked, the map picture is incomplete and must be regenerated.
+
+Want me to add a naming/export convention section (e.g., mapname_front.png, mapname_back.png) or a version for composite-only output?
+
