@@ -1,0 +1,68 @@
+Map Reference Handling Protocol: The "MapReferences" Folder
+
+This document defines how the AI must locate, read, interpret, and use the MapReferences folder. This folder is the sole sanctioned source of visual reference material for map generation. Any map the AI generates must be grounded in what this folder contains.
+
+1. What the MapReferences Folder Is
+The MapReferences folder is the AI's only reference library for maps. Every visual decision about a generated map — layout, scale, props, palette, lighting, materials, style — must trace back to something in this folder.
+
+It contains reference images and associated files of existing maps: screenshots, view sets (front/back/left/right), floor plans, texture swatches, prop references, and any accompanying notes.
+
+It is the ground truth. It outranks the AI's general knowledge, its assumptions, and its aesthetic preferences.
+
+2. Finding the Folder
+The AI must locate the MapReferences folder first before generating anything map-related. If the folder cannot be found, the AI stops and asks — it does not guess, substitute, or proceed on vibes.
+
+The AI must read the folder's full contents — every subfolder, every image, every text/notes file — before treating it as understood. Skimming filenames is not reading.
+
+If the folder has subfolders per map or per category, the AI must respect that structure: references for a given map live together, and the AI must not mix references across maps unless explicitly told to blend them.
+
+3. How to Read References
+Index everything first. Build an internal list of every reference file, what map/category it belongs to, and what view or asset type it shows.
+
+Identify the view set. For each referenced map, note which of the required views exist — front, back, left side, right side. A reference map missing views is still usable, but the AI must know which views it actually has.
+
+Read the notes, not just the pictures. Any accompanying text files (descriptions, dimension notes, palette notes, prop lists, style notes) are part of the reference and must be treated with the same weight as the images.
+
+Note what's ambiguous. If a reference is low-res, cropped, or unclear, the AI flags it internally and either asks for clarification or explicitly states the assumption it made.
+
+Never invent a reference. The AI must not claim a reference exists, describe a file it hasn't read, or fabricate details from a folder it hasn't opened.
+
+4. How References Drive Generation
+Grounded, not copied. References inform the generated map — style, proportions, layout logic, material language, prop density — but the AI must not trace or reproduce a copyrighted map 1:1 unless the user explicitly asks for a replica and the reference folder is clearly licensed for that use.
+
+View-mapped. When generating the required four views (front/back/left/right) of a map, the AI should consult the corresponding reference views — the front reference informs the front generated view, and so on — so the generated view set stays consistent with the reference's orientation and silhouette.
+
+Blend only when told. If multiple references are in the folder, the AI uses them separately by default. Blending references into one map is allowed only on explicit instruction, and the AI must state which references it blended.
+
+Cite the source reference. For any generated map, the AI must be able to say which reference(s) in MapReferences it drew from — by filename or subfolder — and what it took from each (layout? palette? prop style?).
+
+Gaps are stated. If the folder doesn't cover something the user asked for (e.g., no reference exists for a specific prop or a specific side), the AI says so plainly rather than filling the gap silently.
+
+5. Consistency Rules
+One map, one reference set. A single generated map draws from a coherent reference set, not a random grab-bag, unless blending was requested.
+
+Same reference state across all views. Because all four views of a generated map must share lighting, palette, and prop state, the AI must apply the reference's style consistently across front/back/left/right — no view drifting to a different reference's look.
+
+Reference order of authority: explicit user instructions > reference notes files > reference images > AI's general knowledge. The AI must not let its own style preferences override a reference.
+
+6. Integrity and Honesty
+No fabricated references. The AI never invents filenames, never describes images it hasn't read, and never asserts a folder's contents without having opened it.
+
+No silent substitution. If the AI can't use a reference (corrupt, unreadable, incompatible), it says so instead of quietly swapping in something else.
+
+No off-folder sourcing. The AI does not pull map references from the web, from other folders, or from memory of other projects. MapReferences is the only reference source.
+
+Flag conflicts. If two references contradict each other (different palettes for the same map, mismatched view sets), the AI flags the conflict and asks which to follow.
+
+7. Quick Checklist (before generating any map)
+□ MapReferences folder located
+□ Full contents read — every subfolder, image, and notes file
+□ Reference index built (map/category → files → view types)
+□ Available views noted (front / back / left / right per reference)
+□ Notes files read and given proper weight
+□ Ambiguous or missing references flagged
+□ Source references identified for the map being generated
+□ Blending confirmed only if explicitly requested
+□ No fabricated references, no silent substitutions, no off-folder sourcing
+□ Reference order of authority respected (user > notes > images > general knowledge)
+If any box is unchecked, the AI must not generate the map — it resolves the gap or asks first.
